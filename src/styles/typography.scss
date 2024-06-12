@@ -1,0 +1,57 @@
+@use '../styles/mixin.scss' as mixin;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Mont, sans-serif;
+  font-size: 16px;
+
+  line-height: 20px;
+}
+
+h1 {
+  font-size: 64px;
+  line-height: 64px;
+}
+
+h2 {
+  font-size: 46px;
+  line-height: 48px;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 24px;
+}
+
+h4 {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+small {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+p {
+  font-family: Mont, sans-serif;
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: mixin.$border-radius-sm;
+  font-size: 16px;
+}

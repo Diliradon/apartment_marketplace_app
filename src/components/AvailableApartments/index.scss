@@ -1,0 +1,98 @@
+@use '../../styles/mixin.scss' as mixin;
+
+.available-apartments {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  &__head {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__title {
+    font-size: 32px;
+  }
+
+  &__title-count {
+    height: 32px;
+    min-width: 32px;
+    width: fit-content;
+    padding: 4px;
+    border-radius: mixin.$border-radius-sm;;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border: 1px solid mixin.$outline-color;
+    background-color: mixin.$item-info-bg;
+  }
+
+  &__parameters {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include mixin.on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__parameters-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__search-input {
+    gap: 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__item {
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
+    background-color: mixin.$field-bg;
+
+    @include mixin.on-desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__item-info {
+    background-color: mixin.$item-info-bg;
+  }
+
+  &__buttons {
+    padding-top: 10px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    @include mixin.on-desktop {
+      justify-content: start;
+      flex-direction: column;
+    }
+  }
+
+  &__delete-button {
+    background-color: mixin.$error-bg;
+    border: 1px solid mixin.$error-border;
+
+    &:before {
+      background-color: darken(mixin.$error-bg, 10%);
+    }
+  }
+}

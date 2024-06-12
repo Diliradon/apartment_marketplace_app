@@ -1,0 +1,34 @@
+@use '../../styles/mixin.scss' as mixin;
+
+.current-rent {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid mixin.$outline-color;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  box-shadow: mixin.$box-shadow;
+
+  @include mixin.on-tablet {
+    padding: 20px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    font-size: 32px;
+  }
+
+  &__cancel-button {
+    background-color: mixin.$error-bg;
+    border: 1px solid mixin.$error-border;
+
+    &:before {
+      background-color: darken(mixin.$error-bg, 10%);
+    }
+  }
+}

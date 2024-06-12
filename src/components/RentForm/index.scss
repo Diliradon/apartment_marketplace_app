@@ -1,0 +1,12 @@
+@use '../../styles/mixin.scss' as mixin;
+
+.rent-form {
+  height: fit-content;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid mixin.$outline-color;
+  border-radius: 10px;
+  box-shadow: mixin.$box-shadow;
+}

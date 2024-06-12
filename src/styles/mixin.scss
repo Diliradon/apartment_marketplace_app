@@ -1,0 +1,33 @@
+$error-text: #ef4444;
+$error-bg: #ff4757;
+$error-border: #f6071b;
+$error-icon-bg: #f49292;
+$field-bg: #ecfdf5;
+$success-text: #059669;
+$success-bg: #064e3b;
+$success-border: #10b981;
+$outline-color: #00d1d1;
+$buttom-text: #fff;
+$button-bg-succes: #2eb8fd;
+$button-bg-danger: #2eb8fd;
+$item-info-bg: #ffffe0;
+$item-apartment-bg: #a1f1f1;
+$item-details-bg: #ffe4c4;
+
+$box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+
+$border-radius-sm: 5px;
+$tablet-min-width: 760px;
+$desktop-min-width: 1200px;
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}

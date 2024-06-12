@@ -1,0 +1,40 @@
+@use '../../styles/mixin.scss' as mixin;
+
+.rent-textarea {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: none;
+
+  &__title {
+    color: mixin.$success-text;
+  }
+
+  &__field {
+    padding: 10px;
+    border: 1px solid mixin.$success-border;
+    color: mixin.$success-text;
+    background-color: mixin.$field-bg;
+    outline-color: mixin.$outline-color;
+    resize: none;
+    overflow: hidden;
+  }
+
+  &__error-message {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 2px;
+    text-align: center;
+    color: mixin.$error-text;
+  }
+
+  &__error-icon {
+    height: 16px;
+    min-width: 16px;
+    background-color: mixin.$error-icon-bg;
+    border-radius: 50%;
+    line-height: normal;
+  }
+}

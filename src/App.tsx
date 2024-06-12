@@ -1,5 +1,3 @@
-export const App = () => {
-  return (
-    <></>
-  );
-};
+import { Outlet } from 'react-router-dom';
+
+export const App = () => <Outlet />;

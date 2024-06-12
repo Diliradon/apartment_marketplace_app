@@ -1,0 +1,35 @@
+@use '../../styles/mixin.scss' as mixin;
+
+.rent-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__title {
+    color: mixin.$success-text;
+  }
+
+  &__field {
+    border: 1px solid mixin.$success-border;
+    color: mixin.$success-bg;
+    background-color: mixin.$field-bg;
+    outline-color: mixin.$outline-color;
+  }
+
+  &__error-message {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 2px;
+    text-align: center;
+    color: mixin.$error-text;
+  }
+
+  &__error-icon {
+    height: 16px;
+    min-width: 16px;
+    background-color: mixin.$error-icon-bg;
+    border-radius: 50%;
+    line-height: normal;
+  }
+}

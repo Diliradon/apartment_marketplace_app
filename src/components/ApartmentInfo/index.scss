@@ -1,0 +1,24 @@
+@use '../../styles/mixin.scss' as mixin;
+
+.apartment-info {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid mixin.$outline-color;
+  border-radius: mixin.$border-radius-sm;
+  background-color: mixin.$item-apartment-bg;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__details-item {
+    padding: 10px;
+    width: 100%;
+    border-radius: mixin.$border-radius-sm;;
+    border: 1px solid mixin.$outline-color;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: mixin.$item-details-bg;
+    overflow: hidden;
+  }
+}

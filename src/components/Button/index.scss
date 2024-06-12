@@ -1,0 +1,41 @@
+@use '../../styles/mixin.scss' as mixin;
+
+.button {
+  display: inline-block;
+  min-width: 120px;
+  height: fit-content;
+  padding: 12px 24px;
+  border: 1px solid mixin.$outline-color;
+  border-radius: mixin.$border-radius-sm;;
+  text-transform: uppercase;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: mixin.$buttom-text;
+  background-color: mixin.$button-bg-succes;
+  font-size: 16px;
+  cursor: pointer;
+
+  &:before {
+    content: '';
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: darken(mixin.$button-bg-succes, 10%);
+    transition: all .3s;
+    z-index: -1;
+  }
+
+  &:hover {
+    &:before {
+      width: 100%;
+    }
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
