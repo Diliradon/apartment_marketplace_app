@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/apartment_marketplace_app/static/css/main.eb0412e9.css",
+    "main.js": "/apartment_marketplace_app/static/js/main.a0d33f86.js",
+    "static/media/page-not-found.png": "/apartment_marketplace_app/static/media/page-not-found.6f5b123471bc09721371.png",
+    "index.html": "/apartment_marketplace_app/index.html",
+    "static/media/arrow-icon.svg": "/apartment_marketplace_app/static/media/arrow-icon.891b934a02bc10dca3a3a41767483503.svg",
+    "main.eb0412e9.css.map": "/apartment_marketplace_app/static/css/main.eb0412e9.css.map",
+    "main.a0d33f86.js.map": "/apartment_marketplace_app/static/js/main.a0d33f86.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eb0412e9.css",
+    "static/js/main.a0d33f86.js"
+  ]
+}
