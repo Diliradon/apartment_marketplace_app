@@ -1,9 +1,9 @@
-import { Apartment } from '../../types/formValues';
+import { RentFormValues } from '../../schemas/rentSchema';
 import './index.scss';
 
 interface Props {
   classNames?: string;
-  infoApartment: Apartment;
+  infoApartment: RentFormValues;
 }
 
 export const ApartmentInfo: React.FC<Props> = ({

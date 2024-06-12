@@ -1,11 +1,12 @@
-import { Apartment, Option } from '../types/formValues';
+import { RentFormValues } from '../schemas/rentSchema';
+import { Option } from '../types/formValues';
 
 export const getPreparedApartments = (
-  apartments: Apartment[],
+  apartments: RentFormValues[],
   filterBy: Option,
   sortBy: Option,
   query: string,
-): Apartment[] => {
+): RentFormValues[] => {
   let preparedApartments = [...apartments];
 
   if (filterBy.option !== 'All') {

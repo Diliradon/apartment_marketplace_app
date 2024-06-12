@@ -1,35 +1,18 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
 import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button } from '../Button';
 import { RentInput } from '../RentInput';
-import { Apartment } from '../../types/formValues';
 import { RentTextarea } from '../RentTextarea';
+import { RentFormValues, rentSchema } from '../../schemas/rentSchema';
 import './index.scss';
-
-const rentSchema = z.object({
-  id: z.coerce.string(),
-  name: z.coerce.string().min(2, 'Title is required'),
-  rooms: z.coerce
-    .number()
-    .min(1, 'Rooms must be at least 1')
-    .max(7, 'Rooms should be no more than 7 rooms.'),
-  price: z.coerce
-    .number()
-    .min(0, 'Price must be positive')
-    .max(10_000, 'Price must be at most 10000'),
-  description: z.string().min(10, 'Description is required'),
-});
-
-export type RentFormValues = z.infer<typeof rentSchema>;
 
 interface Props {
   className?: string;
-  onNewRent: React.Dispatch<React.SetStateAction<Apartment[]>>;
+  onNewRent: React.Dispatch<React.SetStateAction<RentFormValues[]>>;
 }
 
 export const RentForm: React.FC<Props> = ({ onNewRent, className = '' }) => {
@@ -65,7 +48,7 @@ export const RentForm: React.FC<Props> = ({ onNewRent, className = '' }) => {
 
       <RentInput
         type="text"
-        title="Name"
+        title="Apartment name"
         errorMessage={errors.name?.message || ''}
         {...register('name')}
         placeholder="Name"
@@ -73,7 +56,7 @@ export const RentForm: React.FC<Props> = ({ onNewRent, className = '' }) => {
 
       <RentInput
         type="number"
-        title="Rooms"
+        title="Number of rooms"
         errorMessage={errors.rooms?.message || ''}
         {...register('rooms')}
         placeholder="Rooms"

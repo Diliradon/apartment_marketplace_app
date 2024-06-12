@@ -1,9 +1,9 @@
 import { useLocalStorage } from 'usehooks-ts';
 
 import { RentForm } from '../../components/RentForm';
-import { Apartment } from '../../types/formValues';
 import { CurrentRent } from '../../components/CurrentRent';
 import { AvailableApartments } from '../../components/AvailableApartments';
+import { RentFormValues } from '../../schemas/rentSchema';
 import './index.scss';
 
 const initialAvailableApartments = [
@@ -31,12 +31,12 @@ const initialAvailableApartments = [
 ];
 
 export const HomePage = () => {
-  const [currentRent, setCurrentRent] = useLocalStorage<Apartment | null>(
+  const [currentRent, setCurrentRent] = useLocalStorage<RentFormValues | null>(
     'currentRent',
     null,
   );
   const [availableApartments, setAvailableApartments] = useLocalStorage<
-    Apartment[]
+    RentFormValues[]
   >('availableApartments', initialAvailableApartments);
 
   return (

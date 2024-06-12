@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Button } from '../Button';
 import { ApartmentInfo } from '../ApartmentInfo';
-import { Apartment } from '../../types/formValues';
+import { RentFormValues } from '../../schemas/rentSchema';
 import './index.scss';
 
 interface CurrentRentProps {
-  currentRent: Apartment | null;
-  setCurrentRent: (value: Apartment | null) => void;
+  currentRent: RentFormValues | null;
+  setCurrentRent: (value: RentFormValues | null) => void;
 }
 
 export const CurrentRent: React.FC<CurrentRentProps> = ({

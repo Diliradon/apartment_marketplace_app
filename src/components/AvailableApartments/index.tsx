@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import { Apartment } from '../../types/formValues';
 import { ApartmentInfo } from '../ApartmentInfo';
 import { Button } from '../Button';
 import { DropdownButton } from '../DropdownButton';
 import { RentInput } from '../RentInput';
 import './index.scss';
 import { getPreparedApartments } from '../../helpers/functions';
+import { RentFormValues } from '../../schemas/rentSchema';
 
 const filterOptions = [
   { id: uuidv4(), option: 'All' },
@@ -26,9 +26,9 @@ const sortOptions = [
 ];
 
 interface AvailableApartmentsProps {
-  apartments: Apartment[];
-  setApartments: (apartments: Apartment[]) => void;
-  setCurrentRent: (value: Apartment) => void;
+  apartments: RentFormValues[];
+  setApartments: (apartments: RentFormValues[]) => void;
+  setCurrentRent: (value: RentFormValues) => void;
 }
 
 export const AvailableApartments: React.FC<AvailableApartmentsProps> = ({
@@ -49,12 +49,12 @@ export const AvailableApartments: React.FC<AvailableApartmentsProps> = ({
     query,
   );
 
-  const handleRent = (apartment: Apartment) => {
+  const handleRent = (apartment: RentFormValues) => {
     setCurrentRent(apartment);
     setApartments(apartments.filter(a => a !== apartment));
   };
 
-  const handleDelete = (apartment: Apartment) => {
+  const handleDelete = (apartment: RentFormValues) => {
     setApartments(apartments.filter(a => a !== apartment));
   };
 
