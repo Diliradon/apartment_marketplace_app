@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { ApartmentInfo } from '../ApartmentInfo';
 import { Button } from '../Button';
 import { DropdownButton } from '../DropdownButton';
 import { RentInput } from '../RentInput';
-import './index.scss';
 import { getPreparedApartments } from '../../helpers/functions';
 import { RentFormValues } from '../../schemas/rentSchema';
+import { useSearchParams } from 'react-router-dom';
+import { SearchParams, getSearchWith } from '../../helpers/searchHelper';
+import { FilterApartments, SortApartments } from '../../types/formValues';
+import './index.scss';
 
 const filterOptions = [
   { id: uuidv4(), option: 'All' },
@@ -25,29 +28,29 @@ const sortOptions = [
   { id: uuidv4(), option: 'highest to lowest' },
 ];
 
-interface AvailableApartmentsProps {
+interface Props {
   apartments: RentFormValues[];
   setApartments: (apartments: RentFormValues[]) => void;
   setCurrentRent: (value: RentFormValues) => void;
 }
 
-export const AvailableApartments: React.FC<AvailableApartmentsProps> = ({
+export const AvailableApartments: React.FC<Props> = ({
   apartments,
   setApartments,
   setCurrentRent,
 }) => {
-  const [filterApartmentsBy, setFilterApartmentsBy] = useState(
-    filterOptions[0],
-  );
-  const [sortApartmentsBy, setSortApartmentsBy] = useState(sortOptions[0]);
-  const [query, SetQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
+  const sortBy = (searchParams.get('sortBy') ||
+    'lowest to highest') as SortApartments;
+  const filterBy = (searchParams.get('filterBy') || 'All') as FilterApartments;
+  const [readyApartments, setReadyApartments] = useState(apartments);
 
-  const preparedApartments = getPreparedApartments(
-    apartments,
-    filterApartmentsBy,
-    sortApartmentsBy,
-    query,
-  );
+  const setSearchWith = (params: SearchParams) => {
+    const search = getSearchWith(params, searchParams);
+
+    setSearchParams(search);
+  };
 
   const handleRent = (apartment: RentFormValues) => {
     setCurrentRent(apartment);
@@ -57,6 +60,17 @@ export const AvailableApartments: React.FC<AvailableApartmentsProps> = ({
   const handleDelete = (apartment: RentFormValues) => {
     setApartments(apartments.filter(a => a !== apartment));
   };
+
+  useEffect(() => {
+    const preparedApartments = getPreparedApartments(
+      apartments,
+      filterBy,
+      sortBy,
+      query,
+    );
+
+    setReadyApartments(preparedApartments);
+  }, [apartments, filterBy, sortBy, query]);
 
   return (
     <div className="available-apartments">
@@ -72,8 +86,8 @@ export const AvailableApartments: React.FC<AvailableApartmentsProps> = ({
 
           <DropdownButton
             options={sortOptions}
-            initialOption={sortApartmentsBy}
-            onClickOptipn={setSortApartmentsBy}
+            initialOption={sortBy}
+            onClickOptipn={option => setSearchWith({ sortBy: option.option })}
           />
         </div>
 
@@ -82,8 +96,8 @@ export const AvailableApartments: React.FC<AvailableApartmentsProps> = ({
 
           <DropdownButton
             options={filterOptions}
-            initialOption={filterApartmentsBy}
-            onClickOptipn={setFilterApartmentsBy}
+            initialOption={filterBy}
+            onClickOptipn={option => setSearchWith({ filterBy: option.option })}
           />
         </div>
 
@@ -91,20 +105,20 @@ export const AvailableApartments: React.FC<AvailableApartmentsProps> = ({
           <h4>Search by Name</h4>
 
           <RentInput
-            placeholder="Search"
+            placeholder="Search by Name"
             id="search-dropdown"
             type="search"
             classNames="available-apartments__search-input"
             value={query}
-            onChange={e => SetQuery(e.target.value)}
+            onChange={e => setSearchWith({ query: e.target.value })}
           />
         </div>
       </div>
 
       <ul className="available-apartments__list">
-        {!!preparedApartments.length ? (
+        {!!readyApartments.length ? (
           <>
-            {preparedApartments.map(apartment => (
+            {readyApartments.map(apartment => (
               <li key={apartment.id} className="available-apartments__item">
                 <ApartmentInfo
                   infoApartment={apartment}

@@ -8,7 +8,7 @@ import './index.scss';
 
 interface Props {
   options: Option[];
-  initialOption: Option;
+  initialOption: string;
   onClickOptipn: (value: Option) => void;
 }
 
@@ -41,7 +41,7 @@ export const DropdownButton: React.FC<Props> = ({
       )}
       ref={dropdownRef}
     >
-      {initialOption.option}
+      {initialOption}
       <img
         className={cn(
           'dropdown-button__icon',
@@ -52,17 +52,17 @@ export const DropdownButton: React.FC<Props> = ({
       />
 
       {dropdownToggle && (
-        <div className="dropdown-button__list">
+        <ul className="dropdown-button__list">
           {options.map(option => (
-            <button
+            <li
               key={option.id}
               className="dropdown-button__list-option"
               onClick={() => handleSelectOption(option)}
             >
               {option.option}
-            </button>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </button>
   );

@@ -5,12 +5,12 @@ import { ApartmentInfo } from '../ApartmentInfo';
 import { RentFormValues } from '../../schemas/rentSchema';
 import './index.scss';
 
-interface CurrentRentProps {
+interface Props {
   currentRent: RentFormValues | null;
   setCurrentRent: (value: RentFormValues | null) => void;
 }
 
-export const CurrentRent: React.FC<CurrentRentProps> = ({
+export const CurrentRent: React.FC<Props> = ({
   currentRent,
   setCurrentRent,
 }) => {
