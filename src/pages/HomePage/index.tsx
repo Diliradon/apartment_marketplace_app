@@ -22,7 +22,7 @@ const initialAvailableApartments = [
     description: 'Description',
   },
   {
-    id: '123',
+    id: '1234',
     name: 'Cozy Room',
     rooms: 1,
     price: 1,
@@ -52,11 +52,17 @@ export const HomePage = () => {
           setCurrentRent={setCurrentRent}
         />
 
-        <AvailableApartments
-          apartments={availableApartments}
-          setApartments={setAvailableApartments}
-          setCurrentRent={setCurrentRent}
-        />
+        <>
+          {!!availableApartments.length ? (
+            <AvailableApartments
+              apartments={availableApartments}
+              setApartments={setAvailableApartments}
+              setCurrentRent={setCurrentRent}
+            />
+          ) : (
+            <h2>Not apartments for rent yet</h2>
+          )}
+        </>
       </section>
     </main>
   );

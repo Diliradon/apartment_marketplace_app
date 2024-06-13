@@ -50,22 +50,20 @@ export const DropdownButton: React.FC<Props> = ({
         src={arrowIcon}
         alt="Arrow Icon"
       />
-      <div
-        className={cn(
-          'dropdown-button__list',
-          dropdownToggle && 'dropdown-button__list--active',
-        )}
-      >
-        {options.map(option => (
-          <button
-            key={option.id}
-            className="dropdown-button__list-option"
-            onClick={() => handleSelectOption(option)}
-          >
-            {option.option}
-          </button>
-        ))}
-      </div>
+
+      {dropdownToggle && (
+        <div className="dropdown-button__list">
+          {options.map(option => (
+            <button
+              key={option.id}
+              className="dropdown-button__list-option"
+              onClick={() => handleSelectOption(option)}
+            >
+              {option.option}
+            </button>
+          ))}
+        </div>
+      )}
     </button>
   );
 };
